@@ -1,0 +1,9 @@
+PRGNAM="pass-gen"
+VERSION="2012.03.17"
+HOMEPAGE="http://faltad.sbrk.org/"
+DOWNLOAD="https://github.com/faltad/pass-gen/archive/master.zip"
+MD5SUM="034e43ef4f7ef0cf54e7f95f83aa984e"
+REQUIRES=""
+MAINTAINER="S. Rannou"
+EMAIL="mxs@sbrk.org"
+

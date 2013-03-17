@@ -1,0 +1,40 @@
+#!/bin/sh -e
+
+# Slackware build for pass-gen
+
+# Written by mxs <mxs@sbrk.org>, revision date 2013/03/17
+
+PRGNAM=pass-gen
+VERSION=2012.03.17
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBrk}
+
+if [ -z "$ARCH" ]
+then
+    case "$( uname -m )" in
+	i?86) ARCH=i486 ;;
+	arm*) ARCH=arm ;;
+	*) ARCH=$( uname -m ) ;;
+    esac
+fi
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBrk}
+PKG=$TMP/package-pass-gen
+OUTPUT=${OUTPUT:-/tmp}
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+cd $TMP
+rm -rf $PRGNAM-master
+unzip $CWD/master.zip
+cd $PRGNAM-master
+chmod 755 pass-gen
+mkdir -p $PKG/usr/bin
+cp pass-gen $PKG/usr/bin
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+

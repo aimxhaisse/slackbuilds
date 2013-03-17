@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in.  You must make
+# exactly 11 lines for the formatting to be correct.  It's also customary to
+# leave one space after the ':'.
+
+        |-----handy-ruler------------------------------------------------------|
+pass-gen: pass-gen (password generation utility)
+pass-gen:
+pass-gen: This utility is a helper to generate random password from different
+pass-gen: sets of characters. Available sets of characters are numeric,
+pass-gen: alphabetical, alphanumeric, or a user defined set of characters. The
+pass-gen: length of the generated password can also be randomized between a
+pass-gen: user defined range.
+pass-gen:
+pass-gen: The pass-gen utility was written by : Jean-Baptiste Poupon. It is
+pass-gen: currently available at https://github.com/faltad/pass-gen/.
+pass-gen:
