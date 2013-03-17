@@ -1,0 +1,9 @@
+SLACKBUILD NAME: pass-gen
+SLACKBUILD LOCATION: ./misc/pass-gen
+SLACKBUILD FILES: pass-gen.SlackBuild pass-gen.info slack-desc
+SLACKBUILD VERSION: 2012.03.17
+SLACKBUILD DOWNLOAD: https://github.com/faltad/pass-gen/archive/master.zip
+SLACKBUILD DOWNLOAD_x86_64: https://github.com/faltad/pass-gen/archive/master.zip
+SLACKBUILD MD5SUM: 034e43ef4f7ef0cf54e7f95f83aa984e
+SLACKBUILD SHORT DESCRIPTION:  pass-gen (password generation utility)
+
