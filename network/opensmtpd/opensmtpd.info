@@ -1,0 +1,9 @@
+PRGNAM="opensmtpd"
+VERSION="5.1p1"
+HOMEPAGE="http://poolp.org/"
+DOWNLOAD="http://www.opensmtpd.org/archives/opensmtpd-5.3p1.tar.gz"
+MD5SUM="e98dfbfa17be1ff8f1e091319dfca4d8"
+REQUIRES="libevent"
+MAINTAINER="S. Rannou"
+EMAIL="mxs@sbrk.org"
+

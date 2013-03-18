@@ -7,3 +7,12 @@ SLACKBUILD DOWNLOAD_x86_64: https://github.com/faltad/pass-gen/archive/master.zi
 SLACKBUILD MD5SUM: 034e43ef4f7ef0cf54e7f95f83aa984e
 SLACKBUILD SHORT DESCRIPTION:  pass-gen (password generation utility)
 
+SLACKBUILD NAME: opensmtpd
+SLACKBUILD LOCATION: ./network/opensmtpd
+SLACKBUILD FILES: opensmtpd.SlackBuild opensmtpd.info rc.opensmtpd slack-desc
+SLACKBUILD VERSION: 5.1p1
+SLACKBUILD DOWNLOAD: http://www.opensmtpd.org/archives/opensmtpd-5.3p1.tar.gz
+SLACKBUILD DOWNLOAD_x86_64: http://www.opensmtpd.org/archives/opensmtpd-5.3p1.tar.gz
+SLACKBUILD MD5SUM: e98dfbfa17be1ff8f1e091319dfca4d8
+SLACKBUILD SHORT DESCRIPTION:  opensmtpd (portable version of SMTP server from the OpenBSD project)
+

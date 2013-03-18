@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Slackware build for opensmtpd
+
+# Written by mxs <mxs@sbrk.org>, revision date 2013/03/18
+# Inspired from postfix.slackbuild
+
+PRGNAM="opensmtpd"
+VERSION="5.3p1"
+BUILD=${BUILD:-1}
+TAG=${TAG:-SBrk}
+
+if [ -z "$ARCH" ]
+then
+    case "$(uname -m)" in
+	i?86) ARCH=i486 ;;
+	arm*) ARCH=arm ;;
+	*) ARCH=$(uname -m) ;;
+    esac
+fi
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBrk}
+PKG=$TMP/package-opensmtpd
+OUTPUT=${OUTPUT:-/tmp}
+
+set -e
+
+# Bail if user or group isn't valid on your system
+matches=$(grep '^\(_smtpd\|_smtpq\|_smtpf\):' /etc/passwd 2> /dev/null | wc -l)
+if [ $matches -ne 3 ]
+then
+    cat <<EOF
+
+  You must have a the following users to run this script:
+
+  _smtpd (SMTP daemon)
+  _smtpq (SMTP queue user)
+  _smtpf (SMTP filter user)
+
+  You can add them with:
+
+  # groupadd -g 269 _smtpd
+  # useradd -u 269 -c "SMTP Daemon" -d /var/empty -s /sbin/nologin _smtpd -g _smtpd
+  # useradd -u 270 -c "SMTP queue user" -d /var/empty -s /sbin/nologin _smtpq -g _smtpd
+  # useradd -u 271 -c "SMTP filter user" -d /var/empty -s /sbin/nologin _smtpf -g _smtpd
+
+EOF
+    exit
+fi
+
+rm -rf $PKG $TMP/$PRGNAM-$VERSION
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM-$VERSION
+
+./bootstrap
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --build=$ARCH-slackware-linux
+
+# Compile the application and install it into the $PKG directory
+make
+make install-strip DESTDIR=$PKG
+
+# Compress man pages
+# If the man pages are installed to /usr/share/man instead, you'll need to either
+# add the --mandir=/usr/man flag to configure or move them manually after the
+# make install process is run.
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l )
+do
+    ln -s $( readlink $i ).gz $i.gz ; rm $i
+done
+
+# Copy the slack-desc (and a custom doinst.sh if necessary) into ./install
+mkdir -p $PKG/install $PKG/etc/rc.d $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/rc.opensmtpd > $PKG/etc/rc.d/rc.opensmtpd
+
+# Make the package; be sure to leave it in $OUTPUT
+# If package symlinks need to be created during install *before*
+# your custom contents of doinst.sh runs, then add the -p switch to
+# the makepkg command below -- see makepkg(8) for details
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

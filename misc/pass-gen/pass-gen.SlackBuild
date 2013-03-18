@@ -11,10 +11,10 @@ TAG=${TAG:-_SBrk}
 
 if [ -z "$ARCH" ]
 then
-    case "$( uname -m )" in
+    case "$(uname -m)" in
 	i?86) ARCH=i486 ;;
 	arm*) ARCH=arm ;;
-	*) ARCH=$( uname -m ) ;;
+	*) ARCH=$(uname -m) ;;
     esac
 fi
 
