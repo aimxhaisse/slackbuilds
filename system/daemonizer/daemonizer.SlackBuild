@@ -1,30 +1,31 @@
-#!/bin/bash -e
+#!/bin/sh
 
 # s. rannou <mxs@sbrk.org> revision date 2013/12/15
 
-CWD=$(pwd)
-if [ "$TMP" = "" ]; then
-  TMP=/tmp
-fi
-
-ARCH=${ARCH:-amd64}
+PRGNAM=daemonizer
 VERSION="2013.12.15"
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBrk}
+PKG=${TMP}/package-daemonizer
+OUTPUT=${OUTPUT:-/tmp}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBrk}
+ARCH=$(uname -m)
 BUILD=${BUILD:-1_sra}
-APP=daemonizer
-PKG=$TMP/package-$APP
 COMMIT=bb381507a043e7d2ce305c1cddb5608cc8493bd6
 TARBALL=bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip
 
 rm -rf $PKG
 mkdir -p $TMP $PKG
-cd $PKG
+cd $TMP
+rm -rf $PRGNAM-$COMMIT
 unzip $CWD/$TARBALL
 cd daemonizer-$COMMIT
 
 make
 mkdir -p $PKG/install $PKG/usr/bin
-cp daemonizer $PKG/usr/bin/daemonizer
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cp daemonizer $PKG/usr/bin
 
 cd $PKG
-/sbin/makepkg -l y -c n $TMP/$APP-$VERSION-$ARCH-$BUILD.tgz
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

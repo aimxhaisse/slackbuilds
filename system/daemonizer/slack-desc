@@ -14,3 +14,4 @@ daemonizer: start, stop, and chroot daemons.
 daemonizer: 
 daemonizer: Daemonizer is maintained by s. rannou <mxs@sbrk.org>,
 daemonizer: http://mxs.sbrk.org/
+daemonizer: 
