@@ -7,23 +7,18 @@ if [ "$TMP" = "" ]; then
   TMP=/tmp
 fi
 
-source daemonizer.info
-
 ARCH=${ARCH:-amd64}
+VERSION="2013.12.15"
 BUILD=${BUILD:-1_sra}
 APP=daemonizer
 PKG=$TMP/package-$APP
 COMMIT=bb381507a043e7d2ce305c1cddb5608cc8493bd6
-
-if ! [ -f tarball.zip ]
-then
-    wget $DOWNLOAD -O tarball.zip
-fi
+TARBALL=bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip
 
 rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $PKG
-unzip $CWD/tarball.zip
+unzip $CWD/$TARBALL
 cd daemonizer-$COMMIT
 
 make
