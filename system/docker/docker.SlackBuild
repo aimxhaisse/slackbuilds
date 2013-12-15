@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# s. rannou <mxs@sbrk.org> revision date 2013/12/15
+
+PRGNAM=docker
+VERSION="2013.12.15"
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBrk}
+PKG=${TMP}/docker
+OUTPUT=${OUTPUT:-/tmp}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBrk}
+ARCH=$(uname -m)
+BUILD=${BUILD:-1_sra}
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+mkdir -p $PKG/install $PKG/usr/bin $PKG/etc/rc.d
+cat $CWD/slack-desc > $PKG/install/slack-desc
+chmod +x docker-latest
+cp $CWD/docker-latest $PKG/usr/bin/docker
+cp $CWD/rc.docker $PKG/etc/rc.d
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
