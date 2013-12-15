@@ -12,8 +12,8 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_SBrk}
 ARCH=$(uname -m)
 BUILD=${BUILD:-1_sra}
-COMMIT=bb381507a043e7d2ce305c1cddb5608cc8493bd6
-TARBALL=bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip
+COMMIT=master
+TARBALL=master.zip
 
 rm -rf $PKG
 mkdir -p $TMP $PKG

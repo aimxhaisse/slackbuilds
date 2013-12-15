@@ -17,9 +17,9 @@ rm -rf $PKG
 mkdir -p $TMP $PKG
 mkdir -p $PKG/install $PKG/usr/bin $PKG/etc/rc.d
 cat $CWD/slack-desc > $PKG/install/slack-desc
-chmod +x docker-latest
 cp $CWD/docker-latest $PKG/usr/bin/docker
 cp $CWD/rc.docker $PKG/etc/rc.d
+chmod +x $PKG/usr/bin/docker
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
