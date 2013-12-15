@@ -16,3 +16,12 @@ SLACKBUILD DOWNLOAD_x86_64: http://www.opensmtpd.org/archives/opensmtpd-5.3p1.ta
 SLACKBUILD MD5SUM: e98dfbfa17be1ff8f1e091319dfca4d8
 SLACKBUILD SHORT DESCRIPTION:  opensmtpd (portable version of SMTP server from the OpenBSD project)
 
+SLACKBUILD NAME: daemonizer
+SLACKBUILD LOCATION: ./system/daemonizer
+SLACKBUILD FILES: daemonizer.SlackBuild daemonizer.info slack-desc tarball.zip
+SLACKBUILD VERSION: 2013.12.15
+SLACKBUILD DOWNLOAD: https://github.com/aimxhaisse/daemonizer/archive/bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip
+SLACKBUILD DOWNLOAD_x86_64: https://github.com/aimxhaisse/daemonizer/archive/bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip
+SLACKBUILD MD5SUM: e34023be5f13361503a35af749b04a99
+SLACKBUILD SHORT DESCRIPTION:  daemonizer (yet another boostraper for daemons)
+

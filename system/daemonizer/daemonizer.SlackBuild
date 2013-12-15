@@ -1,0 +1,35 @@
+#!/bin/bash -e
+
+# s. rannou <mxs@sbrk.org> revision date 2013/12/15
+
+CWD=$(pwd)
+if [ "$TMP" = "" ]; then
+  TMP=/tmp
+fi
+
+source daemonizer.info
+
+ARCH=${ARCH:-amd64}
+BUILD=${BUILD:-1_sra}
+APP=daemonizer
+PKG=$TMP/package-$APP
+COMMIT=bb381507a043e7d2ce305c1cddb5608cc8493bd6
+
+if ! [ -f tarball.zip ]
+then
+    wget $DOWNLOAD -O tarball.zip
+fi
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+cd $PKG
+unzip $CWD/tarball.zip
+cd daemonizer-$COMMIT
+
+make
+mkdir -p $PKG/install $PKG/usr/bin
+cp daemonizer $PKG/usr/bin/daemonizer
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $TMP/$APP-$VERSION-$ARCH-$BUILD.tgz

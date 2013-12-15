@@ -1,0 +1,8 @@
+PRGNAM="daemonizer"
+VERSION="2013.12.15"
+HOMEPAGE="http://mxs.sbrk.org/"
+DOWNLOAD="https://github.com/aimxhaisse/daemonizer/archive/bb381507a043e7d2ce305c1cddb5608cc8493bd6.zip"
+MD5SUM="e34023be5f13361503a35af749b04a99"
+REQUIRES=""
+MAINTAINER="s. rannou"
+EMAIL="mxs@sbrk.org"
