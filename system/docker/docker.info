@@ -1,0 +1,8 @@
+PRGNAM="docker"
+VERSION="2013.12.15"
+HOMEPAGE="http://docker.io/"
+DOWNLOAD="https://get.docker.io/builds/Linux/x86_64/docker-latest"
+MD5SUM="f1f2e1b5dcd9bd0976407c33f74baf2f"
+REQUIRES="daemonizer"
+MAINTAINER="s. rannou"
+EMAIL="mxs@sbrk.org"

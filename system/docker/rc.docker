@@ -1,0 +1,48 @@
+#!/bin/sh
+# Start/stop/restart docker.
+
+PIDFILE=/var/run/docker.pid
+
+# Start docker
+docker_start() {
+    if [ -f $PIDFILE ]
+    then
+	echo "Docker is already started, stop it first."
+    else
+	echo -n "Starting docker..."
+	daemonizer -p $PIDFILE -- /usr/bin/docker -d
+	echo " ok"
+    fi
+}
+
+docker_stop() {
+    if [ -f $PIDFILE ]
+    then
+	echo -n "Stopping docker..."
+	kill $(cat $PIDFILE)
+	rm -f $PIDFILE
+	echo " ok"
+    else
+	echo "Already stopped"
+    fi
+}
+
+docker_restart() {
+    docker_stop
+    sleep 1
+    docker_start
+}
+
+case "$1" in
+    'start')
+	docker_start
+	;;
+    'stop')
+	docker_stop
+	;;
+    'restart')
+	docker_restart
+	;;
+    *)
+	echo "usage $0 start|stop|restart"
+esac

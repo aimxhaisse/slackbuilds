@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# s. rannou <mxs@sbrk.org> revision date 2013/12/15
+
+PRGNAM=daemonizer
+VERSION="2013.12.15"
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBrk}
+PKG=${TMP}/package-daemonizer
+OUTPUT=${OUTPUT:-/tmp}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBrk}
+ARCH=$(uname -m)
+BUILD=${BUILD:-1_sra}
+COMMIT=master
+TARBALL=master.zip
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+cd $TMP
+rm -rf $PRGNAM-$COMMIT
+unzip $CWD/$TARBALL
+cd daemonizer-$COMMIT
+
+make
+mkdir -p $PKG/install $PKG/usr/bin
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cp daemonizer $PKG/usr/bin
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
