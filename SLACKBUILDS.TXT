@@ -22,7 +22,7 @@ SLACKBUILD FILES: daemonizer.SlackBuild daemonizer.info slack-desc
 SLACKBUILD VERSION: 2013.12.15
 SLACKBUILD DOWNLOAD: https://github.com/aimxhaisse/daemonizer/archive/master.zip
 SLACKBUILD DOWNLOAD_x86_64: https://github.com/aimxhaisse/daemonizer/archive/master.zip
-SLACKBUILD MD5SUM: 395e41bf89f3ae71c478df9b148fbfdd
+SLACKBUILD MD5SUM: 0f9aade8b3d2800ed70a80f8fd052f4c
 SLACKBUILD SHORT DESCRIPTION:  daemonizer (yet another boostraper for daemons)
 
 SLACKBUILD NAME: docker
